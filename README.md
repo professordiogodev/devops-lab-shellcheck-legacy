@@ -1,6 +1,4 @@
-# Shell: Rescue the Legacy Scripts
-
-The previous sysadmin left four scripts that "work". One deletes the wrong files when a variable is empty, one cannot handle a space in a filename. Lint them, break them on purpose, and make them safe.
+<p align="center"><img src="assets/banner.svg" alt="Shell: Rescue the Legacy Scripts" width="100%"></p>
 
 | | |
 |-|-|
@@ -17,9 +15,10 @@ The previous sysadmin left four scripts that "work". One deletes the wrong files
 5. Commit and push. Open the **Actions** tab of your fork (click *I understand my workflows, go ahead and enable them* the first time). The **Lab check** shows what is still missing.
 6. When the check is green, **submit the URL of your fork** in the course platform.
 
+> [!NOTE]
 > The check only looks at your answers and any files the lab asks you to commit. Your instructor reads your work and may ask you to explain any line.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## The situation
 
@@ -27,6 +26,7 @@ The sysadmin who wrote Clipstr's operations scripts left last month. Four of the
 
 The CTO has asked you to make the scripts safe before the next incident, without changing what they are for.
 
+> [!IMPORTANT]
 > **Your mission**
 > - Run `shellcheck` and **understand** every finding, do not just silence it
 > - Break the scripts yourself with hostile input before fixing them
@@ -34,7 +34,7 @@ The CTO has asked you to make the scripts safe before the next incident, without
 
 **Time:** 45-60 min | **Cost:** free | **You need:** Bash and `shellcheck` (`sudo apt install shellcheck`)
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 0 - Set the scene
 
@@ -46,7 +46,7 @@ Fork this repository, clone your fork, and run:
 
 The four legacy scripts are in `scripts/`. Open each one and read it before you run anything. What does each do? Who calls it, with which arguments?
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 1 - Recon: let the linter talk
 
@@ -60,9 +60,10 @@ shellcheck prints a code (like `SC2086`), a line and an explanation. Open the wi
 2. Which codes repeat? What do they have in common?
 3. Which findings are *only style* and which could cause **data loss or a wrong result**?
 
+> [!NOTE]
 > **Predict** Which of the four scripts do you think is the most dangerous? Write it down before you test them.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 2 - Break them on purpose
 
@@ -106,9 +107,10 @@ What does the second call do to the current directory?
 "$S"/health.sh; echo "exit: $?"
 ```
 
+> [!WARNING]
 > **Break it** For the worst bug, write a one-sentence incident report: what input, what the script did, what it should have done.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 3 - Fix them
 
@@ -128,9 +130,10 @@ Rules of the game:
 2. `shellcheck scripts/*.sh` must print **nothing**: do not add `# shellcheck disable` comments to hide a finding.
 3. The scripts must behave on awkward input: spaces in names, empty arguments, missing folders.
 
+> [!NOTE]
 > **Think** When is a `# shellcheck disable=SCxxxx` comment actually acceptable? What must come with it?
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 4 - Prove it
 
@@ -140,7 +143,7 @@ Rules of the game:
 
 It runs shellcheck on every script and then exercises each one with the hostile inputs from Part 2 inside a private temporary directory.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Level up (optional)
 
