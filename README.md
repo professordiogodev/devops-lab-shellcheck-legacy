@@ -24,7 +24,7 @@
 
 <p align="center"><img src="assets/gifs/situation.gif" width="300" alt=""></p>
 
-The sysadmin who wrote Clipstr's operations scripts left last month. Four of them still run every night from cron: a backup, a cache cleanup, a log rotation and a health check. They "work". Nobody dares to touch them. Then last Wednesday the cleanup script ran with an empty variable and wiped a folder it should never have touched.
+The sysadmin who wrote Clippy's operations scripts left last month. Four of them still run every night from cron: a backup, a cache cleanup, a log rotation and a health check. They "work". Nobody dares to touch them. Then last Wednesday the cleanup script ran with an empty variable and wiped a folder it should never have touched.
 
 The CTO has asked you to make the scripts safe before the next incident, without changing what they are for.
 
