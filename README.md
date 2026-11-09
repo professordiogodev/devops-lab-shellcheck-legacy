@@ -66,14 +66,14 @@ shellcheck prints a code (like `SC2086`), a line and an explanation. Open the wi
 
 ## Part 2 - Break them on purpose
 
-Do these in a **scratch directory** (`mktemp -d`), never against real data. For each hostile input, predict what the script will do, then run it.
+Do these in a **scratch directory**, never against real data. First, from the root of this repo, remember where the scripts are: `export S="$PWD/scripts"`. For each hostile input, predict what the script will do, then run it.
 
 **backup.sh**
 
 ```bash
 mkdir -p /tmp/lab/src && cd /tmp/lab
 echo hello > "src/my file.txt"; echo hi > src/plain.txt
-~/path/to/scripts/backup.sh src "dest dir"
+"$S"/backup.sh src "dest dir"
 ```
 
 What happens to `my file.txt`? How many files does the final message report?
@@ -82,7 +82,7 @@ What happens to `my file.txt`? How many files does the final message report?
 
 ```bash
 mkdir -p /tmp/lab/data/cache /tmp/lab/data/precious; touch /tmp/lab/data/precious/keepme
-DATA_DIR=/tmp/lab/data ~/path/to/scripts/cleanup.sh ""
+DATA_DIR=/tmp/lab/data "$S"/cleanup.sh ""
 ls /tmp/lab/data/precious
 ```
 
@@ -93,8 +93,8 @@ What happened to `keepme`? Now think about what the same script does when `DATA_
 ```bash
 cd /tmp/lab && mkdir "my logs" && cd "my logs"
 for i in 1 2 3 4 5; do touch app$i.log; done
-~/path/to/scripts/rotate.sh "/tmp/lab/my logs"
-~/path/to/scripts/rotate.sh /tmp/lab/does-not-exist
+"$S"/rotate.sh "/tmp/lab/my logs"
+"$S"/rotate.sh /tmp/lab/does-not-exist
 ```
 
 What does the second call do to the current directory?
@@ -102,8 +102,8 @@ What does the second call do to the current directory?
 **health.sh**
 
 ```bash
-~/path/to/scripts/health.sh http://127.0.0.1:9 1; echo "exit: $?"
-~/path/to/scripts/health.sh; echo "exit: $?"
+"$S"/health.sh http://127.0.0.1:9 1; echo "exit: $?"
+"$S"/health.sh; echo "exit: $?"
 ```
 
 > **Break it** For the worst bug, write a one-sentence incident report: what input, what the script did, what it should have done.
