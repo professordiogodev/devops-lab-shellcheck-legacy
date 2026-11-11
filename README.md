@@ -22,7 +22,7 @@
 
 ## 🎬 The situation
 
-<p align="center"><img src="assets/gifs/situation.gif" width="300" alt=""></p>
+<p align="center"><img src="assets/gifs/situation.gif" width="300" alt="Animation: don&#x27;t touch it"></p>
 
 The sysadmin who wrote Clippy's operations scripts left last month. Four of them still run every night from cron: a backup, a cache cleanup, a log rotation and a health check. They "work". Nobody dares to touch them. Then last Wednesday the cleanup script ran with an empty variable and wiped a folder it should never have touched.
 
@@ -52,7 +52,7 @@ The four legacy scripts are in `scripts/`. Open each one and read it before you 
 
 ## Part 1 - Recon: let the linter talk
 
-<p align="center"><img src="assets/gifs/recon.gif" width="300" alt=""></p>
+<p align="center"><img src="assets/gifs/recon.gif" width="300" alt="Animation: shellcheck scripts/*.sh"></p>
 
 ```bash
 shellcheck scripts/*.sh
@@ -141,7 +141,7 @@ Rules of the game:
 
 ## Part 4 - Prove it
 
-<p align="center"><img src="assets/gifs/verify.gif" width="300" alt=""></p>
+<p align="center"><img src="assets/gifs/verify.gif" width="300" alt="A terminal running the lab&#x27;s verify script and printing PASS lines, ending with ALL CHECKS PASSED"></p>
 
 ```bash
 ./verify.sh
