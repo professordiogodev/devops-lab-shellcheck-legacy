@@ -60,7 +60,7 @@ The four legacy scripts are in `scripts/`. Open each one and read it before you 
 
 ## Part 1 - Recon: let the linter talk
 
-<p align="center"><img src="assets/gifs/recon.gif" width="300" alt="Animation: shellcheck scripts/*.sh"></p>
+<p align="center"><img src="assets/gifs/recon.gif" width="640" alt="Terminal recording: shellcheck findings on the cleanup script, and the command that would run with empty variables"></p>
 
 ```bash
 shellcheck scripts/*.sh
@@ -149,7 +149,7 @@ Rules of the game:
 
 ## Part 4 - Prove it
 
-<p align="center"><img src="assets/gifs/verify.gif" width="300" alt="A terminal running the lab&#x27;s verify script and printing PASS lines, ending with ALL CHECKS PASSED"></p>
+<p align="center"><img src="assets/gifs/verify.gif" width="640" alt="Terminal recording: verify.sh ending with ALL CHECKS PASSED 17 of 17"></p>
 
 ```bash
 ./verify.sh
