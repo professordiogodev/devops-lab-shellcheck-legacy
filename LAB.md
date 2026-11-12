@@ -2,9 +2,17 @@
 
 ## The situation
 
-The sysadmin who wrote Clippy's operations scripts left last month. Four of them still run every night from cron: a backup, a cache cleanup, a log rotation and a health check. They "work". Nobody dares to touch them. Then last Wednesday the cleanup script ran with an empty variable and wiped a folder it should never have touched.
+```text
+POSTMORTEM - "The cleanup that cleaned too much"          status: root cause known
+What happened : Wednesday night, cleanup.sh ran with an empty variable
+                and removed a folder it should never have touched
+Why it ran    : cron, as every night; nobody has dared to read the script
+Why it hurt   : the author left last month; no tests, no comments
+Open item     : make the four night scripts safe before the next incident,
+                without changing what they are for
+```
 
-The CTO has asked you to make the scripts safe before the next incident, without changing what they are for.
+Four scripts still run every night from cron: a backup, a cache cleanup, a log rotation and a health check. They "work", which is exactly what the sysadmin who wrote them would have said too. The CTO wants the open item closed: a linter will tell you what is wrong, you will prove it by making each script fail the way it did on Wednesday, and then you will fix them.
 
 > **Your mission**
 > - Run `shellcheck` and **understand** every finding, do not just silence it
